@@ -47,22 +47,22 @@ def pregunta_02():
     """
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = ____
+    df = pd.read_csv('gm_2008_region.csv')
 
     # Imprima las dimensiones del DataFrame
-    print(____.____)
+    print(df.shape)
 
     # Imprima la correlación entre las columnas `life` y `fertility` con 4 decimales.
-    print(____)
+    print(round(df["life"].corr(df["fertility"]), 4))
 
     # Imprima la media de la columna `life` con 4 decimales.
-    print(____)
+    print(round(df["life"].mean(),4))
 
     # Imprima el tipo de dato de la columna `fertility`.
-    print(____)
+    print(type(df["fertility"]))
 
     # Imprima la correlación entre las columnas `GDP` y `life` con 4 decimales.
-    print(____)
+    print(round(df["GDP"].corr(df["life"]),4))
 
 
 def pregunta_03():
@@ -145,4 +145,5 @@ def pregunta_04():
     print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
     rmse = np.sqrt(____(____, ____))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
+
 
