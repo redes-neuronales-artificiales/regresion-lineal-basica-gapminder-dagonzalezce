@@ -72,35 +72,35 @@ def pregunta_03():
     """
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = ____
+    df = pd.read_csv('gm_2008_region.csv')
 
     # Asigne a la variable los valores de la columna `fertility`
-    X_fertility = ____
+    X_fertility = df["fertility"].values.reshape(-1,1)
 
     # Asigne a la variable los valores de la columna `life`
-    y_life = ____
+    y_life = df["life"].values
 
     # Importe LinearRegression
-    from ____ import ____
+    from sklearn.linear_model import LinearRegression
 
     # Cree una instancia del modelo de regresión lineal
-    reg = ____
+    reg = LinearRegression()
 
     # Cree El espacio de predicción. Esto es, use linspace para crear
     # un vector con valores entre el máximo y el mínimo de X_fertility
-    prediction_space = ____(
-        ____,
-        ____,
-    ).reshape(____, _____)
+    prediction_space = np.linspace(
+        min(X_fertility),
+        max(X_fertility),
+    ).reshape(-1,1)
 
     # Entrene el modelo usando X_fertility y y_life
-    reg.fit(____, ____)
+    reg.fit(X_fertility, y_life)
 
     # Compute las predicciones para el espacio de predicción
     y_pred = reg.predict(prediction_space)
 
     # Imprima el R^2 del modelo con 4 decimales
-    print(____.score(____, ____).round(____))
+    print(reg.score(X_fertility, y_life).round(4))
 
 
 def pregunta_04():
@@ -147,3 +147,5 @@ def pregunta_04():
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
 
 
+if __name__ == "__main__":
+    pregunta_03()
